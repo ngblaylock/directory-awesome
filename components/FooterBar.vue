@@ -1,6 +1,6 @@
 <template>
   <footer>
-    Made with Nuxt.js
+    <img src="/built-with-nuxt-white.svg" alt="Built with Nuxt.js">
   </footer>
 </template>
 
@@ -13,8 +13,11 @@ export default {
 <style lang="scss" scoped>
   footer{
     color: white;
-    background: #3F8576;
+    background: #35495C;
     padding: 12px;
     text-align: center;
+    img{
+      max-height: 30px;
+    }
   }
 </style>

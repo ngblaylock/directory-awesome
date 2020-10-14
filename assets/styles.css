@@ -12,6 +12,10 @@ dark: #35495C
 lightgrey: #dbdbdb
  */
 
+*{
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Sora", sans-serif;
   font-weight: 300;
@@ -24,11 +28,14 @@ h1,
 h2,
 h3 {
   font-weight: 500;
-  color: #3f8576;
+  color: #35495c;
 }
 
 a {
   color: #3f8576;
+}
+a:hover{
+  color: #327465;
 }
 
 table {
