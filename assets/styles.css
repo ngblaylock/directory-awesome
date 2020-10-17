@@ -63,7 +63,7 @@ td, th{
 .btn{
   font-family: "Sora", sans-serif;
   font-weight: 300;
-  padding: 3px 7px;
+  padding: 8px 12px;
   background: transparent;
   border: 1px solid #3f8576;
   color: #3f8576;
@@ -78,4 +78,8 @@ td, th{
   cursor: pointer;
   background: #3f8576;
   color: white;
+}
+
+.text-right{
+  text-align: right;
 }

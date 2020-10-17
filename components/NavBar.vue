@@ -3,7 +3,7 @@
     <div class="logo"><nuxt-link to="/">Directory Awesome</nuxt-link></div>
     <ul>
       <li><nuxt-link to="/">Home</nuxt-link></li>
-      <li><nuxt-link to="/directory">Directory</nuxt-link></li>
+      <li><nuxt-link to="/directory" class="deep">Directory</nuxt-link></li>
       <li><nuxt-link to="/about">About</nuxt-link></li>
     </ul>
   </nav>
@@ -40,7 +40,7 @@ ul {
       color: #35495c;
       padding: 8px 12px;
       text-decoration: none;
-      &.nuxt-link-exact-active {
+      &.nuxt-link-exact-active, &.deep.nuxt-link-active {
         border-bottom: 4px solid #3f8576;
       }
     }

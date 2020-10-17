@@ -1,7 +1,16 @@
 <template>
   <div class="container">
     <h1>About Directory Awesome</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, fugit tempore autem qui odit asperiores non repudiandae placeat deserunt atque. Consequuntur, perferendis fugiat explicabo quasi labore voluptas possimus omnis pariatur!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, fugit tempore autem qui odit asperiores non repudiandae placeat deserunt atque. Consequuntur, perferendis fugiat explicabo quasi labore voluptas possimus omnis pariatur!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil perferendis amet mollitia fuga libero itaque, beatae dolores sit rerum eum temporibus aspernatur consequuntur tenetur, modi dolor distinctio officiis laborum accusantium?</p>
   </div>
 </template>
+
+<script>
+export default {
+  name: "About"
+}
+</script>
+
+<style>
+
+</style>
