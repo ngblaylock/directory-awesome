@@ -80,6 +80,15 @@ td, th{
   color: white;
 }
 
+.btn.btn-clear{
+  color: #dbdbdb;
+  border: 1px solid #dbdbdb;
+}
+.btn.btn-clear:hover{
+  background: #dbdbdb;
+  color: white;
+}
+
 .text-right{
   text-align: right;
 }

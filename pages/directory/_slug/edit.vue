@@ -31,19 +31,29 @@
           <label for="bio">Bio</label>
           <textarea required id="bio" v-model="person.bio"></textarea>
         </div>
-        <button type="submit" class="btn">Submit</button>
+        <template v-if="$route.params.slug == 'new'">
+          <button @click.prevent="addPerson" class="btn" style="margin-left: 112px;">Add New Person</button>
+        </template>
+        <template v-else>
+          <button @click.prevent="updatePerson" class="btn" style="margin-left: 112px;">Update</button>
+          <button class="btn btn-clear" @click.prevent="deletePerson">
+            Delete
+          </button>
+        </template>
       </form>
     </div>
     <div class="col-sm-3" v-if="person.img">
-      <img :src="person.img" alt="" style="max-width: 100%;" />
+      <img :src="person.img" alt="" style="max-width: 100%" />
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "EditPerson",
-  data: function() {
+  data: function () {
     return {
       person: {
         name: "",
@@ -52,12 +62,55 @@ export default {
         email: "",
         phone: "",
         office: "",
-        bio: ""
-      }
+        bio: "",
+      },
     };
   },
+  methods: {
+    deletePerson: function () {
+      axios
+        .delete(
+          `https://jsonbox.io/directoryawesome_asdfjkl1234567890/${this.person._id}`
+        )
+        .then((response) => {
+          console.log("Person Deleted");
+          window.location.href = "/directory";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    addPerson: function(){
+      axios
+        .post(
+          `https://jsonbox.io/directoryawesome_asdfjkl1234567890`,
+          this.person
+        )
+        .then((response) => {
+          console.log("New Person Added");
+          window.location.href = "/directory";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updatePerson: function () {
+      axios
+        .put(
+          `https://jsonbox.io/directoryawesome_asdfjkl1234567890/${this.person._id}`,
+          this.person
+        )
+        .then((response) => {
+          console.log("Person Updated");
+          window.location.href = "/directory";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
   watch: {
-    'person.name': function() {
+    "person.name": function () {
       const a =
         "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";
       const b =
@@ -68,21 +121,22 @@ export default {
         .toString()
         .toLowerCase()
         .replace(/\s+/g, "-") // Replace spaces with -
-        .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+        .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
         .replace(/&/g, "-and-") // Replace & with 'and'
         .replace(/[^\w\-]+/g, "") // Remove all non-word characters
         .replace(/\-\-+/g, "-") // Replace multiple - with single -
         .replace(/^-+/, "") // Trim - from start of text
         .replace(/-+$/, ""); // Trim - from end of text
-    }
+    },
   },
-  created: function() {
+  created: function () {
     let sp = this.$attrs.selectedPerson;
+    console.log(sp);
     if (sp) {
       console.log("yep");
       this.person = { ...sp };
     }
-  }
+  },
 };
 </script>
 

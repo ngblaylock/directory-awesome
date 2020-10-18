@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="mt-3">
     <img src="/built-with-nuxt-white.svg" alt="Built with Nuxt.js">
   </footer>
 </template>

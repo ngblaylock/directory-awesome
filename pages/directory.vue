@@ -1,51 +1,49 @@
 <template>
   <div class="container">
-    <nuxt-child :selectedPerson="selectedPerson" />
+    <div v-if="loading">
+      <h1 style="text-align: center; color: #dbdbdb">Loading...</h1>
+    </div>
+    <nuxt-child v-else :selectedPerson="selectedPerson" />
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Directory",
-  data: function(){
+  data: function () {
     return {
-      people: [
-        {
-          name: 'Martin Berger',
-          nameSlug: 'martin-berger',
-          email: 'berger.martin@mail.com',
-          phone: '999-555-1234',
-          office: 'Building 124 Room 102',
-          bio: 'Lorem Ipsum ...',
-          img: '/people/berger-martin.png'
-        },
-        {
-          name: 'Robyn Carney',
-          nameSlug: 'robyn-carney',
-          email: 'carney-robyn@mail.com',
-          phone: '999-555-2345',
-          office: 'Building 124 Room 108',
-          bio: 'Lorem Ipsum ...',
-          img: '/people/carney-robyn.png'
-        }
-      ]
-    }
+      people: [],
+      loading: true,
+    };
+  },
+  created: function () {
+    axios
+      .get("https://jsonbox.io/directoryawesome_asdfjkl1234567890?sort=name")
+      .then((response) => {
+        this.people = response.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   },
   computed: {
-    selectedPerson: function(){
-      if(this.$route.params.slug){
-        return this.people.find( person => {
-          return person.nameSlug == this.$route.params.slug
-        })
+    selectedPerson: function () {
+      if (this.$route.params.slug) {
+        return this.people.find((person) => {
+          return person.nameSlug == this.$route.params.slug;
+        });
+      } else {
+        return this.people;
       }
-      else {
-        return this.people
-      }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>
