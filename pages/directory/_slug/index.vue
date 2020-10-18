@@ -17,7 +17,7 @@
       </p>
       {{ selectedPerson.bio }}
       <p>
-        <a :href="`/directory/${selectedPerson.nameSlug}/edit`" class="btn">Edit</a>
+        <nuxt-link :to="`/directory/${selectedPerson.nameSlug}/edit`" class="btn">Edit</nuxt-link>
       </p>
     </div>
   </div>
